@@ -1,8 +1,7 @@
-FROM nginx:1.15.8
+FROM openjdk
 
-ADD static/fruit.json /usr/share/nginx/html/fruit.json
-ADD nginx.conf /etc/nginx/nginx.conf
+COPY target/*.jar /
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
